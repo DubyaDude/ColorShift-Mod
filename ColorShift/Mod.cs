@@ -22,24 +22,20 @@ namespace ColorShift
 		#endregion
 
 		#region Prefs
+		private static MelonPreferences_Category category;
 		private static MelonPreferences_Entry<Mode> mainMode;
 		private static MelonPreferences_Entry<bool> keybinds;
+		private static MelonPreferences_Entry<bool> showDifference;
 		private static MelonPreferences_Entry<Color[]>[] customs = new MelonPreferences_Entry<Color[]>[5];
 		#endregion
-
-		#if DEBUG
-		private void PrintDebug(object toWrite)
-        {
-            LoggerInstance.Msg("[DEBUG] " + toWrite);
-		}
-		#endif
         
 		public override void OnApplicationStart()
 		{
             ClassInjector.RegisterTypeInIl2Cpp<Filter>();
-			var category = MelonPreferences.CreateCategory("ColorShift");
+			category = MelonPreferences.CreateCategory("ColorShift");
 			mainMode = category.CreateEntry("MainCamMode", Mode.Normal);
 			keybinds = category.CreateEntry("Keybinds", true);
+			showDifference = category.CreateEntry("ShowDifference", false);
 
 			customs[0] = category.CreateEntry("Custom1", normalColor);
 			customs[1] = category.CreateEntry("Custom2", normalColor);
@@ -57,7 +53,7 @@ namespace ColorShift
 			Filter.RGB[11] = customs[2].Value;
 			Filter.RGB[12] = customs[3].Value;
 			Filter.RGB[13] = customs[4].Value;
-			ForceRefresh();
+			RefreshMainFilter();
 		}
 
 		public override void OnSceneWasInitialized(int buildIndex, string sceneName)
@@ -71,7 +67,7 @@ namespace ColorShift
                 mainFilter.mode = mainMode.Value;
                 LoggerInstance.Msg("Filter Created");
 			}
-			ForceRefresh();
+			RefreshMainFilter();
 		}
 
 		public override void OnLateUpdate()
@@ -101,13 +97,19 @@ namespace ColorShift
 				num = 0;
 			}
 			mainFilter.mode = (Mode)num;
-			LoggerInstance.Msg(mainFilter.mode);
+            mainMode.Value = mainFilter.mode;
+            mainMode.Save();
+			category.SaveToFile();
+			LoggerInstance.Msg("Filter Mode: " + mainFilter.mode);
 		}
 
-		private void ForceRefresh()
+		private void RefreshMainFilter()
 		{
 			if (mainFilter != null)
-				mainFilter.forceRefresh = true;
+            {
+                mainFilter.showDifference = showDifference.Value;
+                mainFilter.forceRefresh = true;
+			}
 		}        
 	}
 }
