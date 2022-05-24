@@ -14,7 +14,6 @@ namespace ColorShift
     {
 		#region Components
 		private static Filter mainFilter;
-		private static Filter uiFilter;
 		#endregion
 
 		#region Consts
@@ -24,17 +23,22 @@ namespace ColorShift
 
 		#region Prefs
 		private static MelonPreferences_Entry<Mode> mainMode;
-		private static MelonPreferences_Entry<Mode> uiMode;
 		private static MelonPreferences_Entry<bool> keybinds;
 		private static MelonPreferences_Entry<Color[]>[] customs = new MelonPreferences_Entry<Color[]>[5];
 		#endregion
 
+		#if DEBUG
+		private void PrintDebug(object toWrite)
+        {
+            LoggerInstance.Msg("[DEBUG] " + toWrite);
+		}
+		#endif
+        
 		public override void OnApplicationStart()
 		{
-			ClassInjector.RegisterTypeInIl2Cpp<Filter>();
+            ClassInjector.RegisterTypeInIl2Cpp<Filter>();
 			var category = MelonPreferences.CreateCategory("ColorShift");
 			mainMode = category.CreateEntry("MainCamMode", Mode.Normal);
-			uiMode = category.CreateEntry("UICamMode", Mode.Normal);
 			keybinds = category.CreateEntry("Keybinds", true);
 
 			customs[0] = category.CreateEntry("Custom1", normalColor);
@@ -44,11 +48,11 @@ namespace ColorShift
 			customs[4] = category.CreateEntry("Custom5", normalColor);
 			category.SaveToFile();
 			OnPreferencesLoaded();
-		}
+        }
 
 		public override void OnPreferencesLoaded()
 		{
-			Filter.RGB[9] = customs[0].Value;
+            Filter.RGB[9] = customs[0].Value;
 			Filter.RGB[10] = customs[1].Value;
 			Filter.RGB[11] = customs[2].Value;
 			Filter.RGB[12] = customs[3].Value;
@@ -58,14 +62,14 @@ namespace ColorShift
 
 		public override void OnSceneWasInitialized(int buildIndex, string sceneName)
 		{
-			if (mainFilter == null && Camera.main != null)
+            if (mainFilter == null && Camera.main != null)
 			{
 				AssetBundle assetBundle = AssetBundle.LoadFromMemory_Internal(Properties.Resources.assets, 0u);
 				Il2CppReferenceArray<UnityEngine.Object> il2CppReferenceArray = assetBundle.LoadAllAssets();
 				Filter.ChannelMixerShader = ((Il2CppObjectBase)(object)il2CppReferenceArray[0]).Cast<Shader>();
 				mainFilter = Camera.main.gameObject.AddComponent<Filter>();
-
-				LoggerInstance.Msg("Filter Created");
+                mainFilter.mode = mainMode.Value;
+                LoggerInstance.Msg("Filter Created");
 			}
 			ForceRefresh();
 		}
@@ -104,8 +108,6 @@ namespace ColorShift
 		{
 			if (mainFilter != null)
 				mainFilter.forceRefresh = true;
-			if (uiFilter != null)
-				uiFilter.forceRefresh = true;
 		}        
 	}
 }
