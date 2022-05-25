@@ -105,18 +105,18 @@ namespace ColorShift
 
 		private void Start()
 		{
-			RefreshMaterial();
+			RefreshMaterial(true);
 		}
 
-		private void RefreshMaterial(bool refresh = true)
+		private void RefreshMaterial(bool refresh = false)
 		{
 			if (material == null)
 			{
 				material = new Material(ChannelMixerShader);
 				material.hideFlags = HideFlags.HideAndDontSave;
-				refresh = true;
+				forceRefresh = true;
 			}
-			if (refresh)
+			if (forceRefresh || refresh)
 			{
 				material.SetColor("_R", RGB[(int)mode][0]);
 				material.SetColor("_G", RGB[(int)mode][1]);
@@ -134,7 +134,8 @@ namespace ColorShift
 			}
 			else
 			{
-				RefreshMaterial(forceRefresh);
+				RefreshMaterial();
+				destination.vrUsage = source.vrUsage;
 				Graphics.Blit(source, destination, material, showDifference ? 1 : 0);
 			}
 		}
