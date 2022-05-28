@@ -1,4 +1,4 @@
-# Colorhift - README WIP
+# ColorShift - README WIP
 
 
 https://www.color-blindness.com/types-of-color-blindness/
