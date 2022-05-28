@@ -12,7 +12,7 @@ In MelonPreferences.cfg:
 - **ShowDifference**(Bool) - Show how much colors have been affected with current filter
 - **Custom1-5**(Color[][]) - Cusom color shifts that can be configured by the user
 
-### ColorMatrix presets based on Percentages
+### ColorMatrix presets in Percentages
 
 <table>
    <tbody>
@@ -145,7 +145,7 @@ In MelonPreferences.cfg:
    </tbody>
 </table>
 
-### ColorMatrix presets based on RGB(255)
+### ColorMatrix presets in RGB(255)
 
 <table>
    <tbody>
@@ -281,6 +281,10 @@ In MelonPreferences.cfg:
 ## Sources:
 - [ColorMatrix Pattern](https://web.archive.org/web/20091001043530/http://www.colorjack.com/labs/colormatrix/)
 - [Color-blind type facts](https://www.color-blindness.com/types-of-color-blindness/)
+
+## Credits:
+- [Requi](https://github.com/RequiDev) - For helping me figure out the funky shader stuff when it came to VR.
+- Venclaire - For pushing me to make the mod in the first place.
 
 ## DISCLAIMERS:
 - \*This mod in no way is meant to act as a 'ColorBlind mode' for games. This mod is supposed to emulate an approximation of what colorblind people may see to account for color-blind people during game/map/avatar development. 
