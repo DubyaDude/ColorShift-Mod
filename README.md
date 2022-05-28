@@ -1,10 +1,11 @@
 # ColorShift - README WIP
+Allows you to approximately see the way colorblind people see. Would mostly help in game/map/avatar design. Also allows you to make your own custom 'color shifts' which may help those that are colorblind*.
 
+## Keybinds - WIP
 
-https://www.color-blindness.com/types-of-color-blindness/
-https://web.archive.org/web/20091001043530/http://www.colorjack.com/labs/colormatrix/
+## Configuration - WIP
 
-## ColorMatrix based on Percentages
+### ColorMatrix based on Percentages
 
 <table>
    <tbody>
@@ -137,7 +138,7 @@ https://web.archive.org/web/20091001043530/http://www.colorjack.com/labs/colorma
    </tbody>
 </table>
 
-## ColorMatrix Based on RGB(255)
+### ColorMatrix Based on RGB(255)
 
 <table>
    <tbody>
@@ -269,3 +270,12 @@ https://web.archive.org/web/20091001043530/http://www.colorjack.com/labs/colorma
       </tr>
    </tbody>
 </table>
+
+## Sources:
+- [ColorMatrix Pattern](https://web.archive.org/web/20091001043530/http://www.colorjack.com/labs/colormatrix/)
+- [Color-blind type facts](https://www.color-blindness.com/types-of-color-blindness/)
+
+## DISCLAIMERS:
+- \*This mod in no way is meant to act as a 'ColorBlind mode' for games. This mod is supposed to emulate an approximation of what colorblind people may see to account for color-blind people during game/map/avatar development. 
+  - HOWEVER some people that I've spoken to who were colorblind said that this helped in general gameplay, unfortunately, this is NOT what should be done to account for color-blind people. However, if it does indeed make others' experience better, then be free to use it as such.
+- \*\*The accuracy of the preset color matrix may be put into question as the original author of these values himself stated "the ColorMatrix version is very simplified, and not accurate" ([Source](https://web.archive.org/web/20141226095637/http://kaioa.com/node/75#comment-247))
