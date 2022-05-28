@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: MelonInfo(typeof(ColorShift.ColorShiftMod), "ColorShift", "0.0.4", "DubyaDude", "https://github.com/DubyaDude/ColorShift")]
+[assembly: MelonInfo(typeof(ColorShift.ColorShiftMod), "ColorShift", "0.1.0", "DubyaDude", "https://github.com/DubyaDude/ColorShift")]
 [assembly: MelonGame("VRChat", "VRChat")]
 
 // General Information about an assembly is controlled through the following
