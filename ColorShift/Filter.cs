@@ -134,7 +134,14 @@ namespace ColorShift
 			}
 			else
 			{
-				RefreshMaterial();
+                /*
+				if(source == null)
+                    Console.WriteLine("source is null");
+                if (destination == null)
+                    Console.WriteLine("destination is null");
+                */
+                
+                RefreshMaterial();
 				Graphics.Blit(source, destination, material, showDifference ? 1 : 0);
 			}
 		}
