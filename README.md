@@ -1,6 +1,8 @@
 https://www.color-blindness.com/types-of-color-blindness/
 https://web.archive.org/web/20091001043530/http://www.colorjack.com/labs/colormatrix/
 
+## ColorMatrix based on Percentages
+
 <table>
    <tbody>
       <tr>
@@ -131,6 +133,8 @@ https://web.archive.org/web/20091001043530/http://www.colorjack.com/labs/colorma
       </tr>
    </tbody>
 </table>
+
+## ColorMatrix Based on RGB(255)
 
 <table>
    <tbody>
