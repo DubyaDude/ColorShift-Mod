@@ -10,8 +10,8 @@ using UnityEngine;
 
 namespace ColorShift
 {
-    public class ColorShiftMod : MelonMod
-    {
+	public class ColorShiftMod : MelonMod
+	{
 		#region Components
 		private static Filter mainFilter;
 		#endregion
@@ -28,10 +28,10 @@ namespace ColorShift
 		private static MelonPreferences_Entry<bool> showDifference;
 		private static MelonPreferences_Entry<Color[]>[] customs = new MelonPreferences_Entry<Color[]>[5];
 		#endregion
-        
+
 		public override void OnApplicationStart()
 		{
-            ClassInjector.RegisterTypeInIl2Cpp<Filter>();
+			ClassInjector.RegisterTypeInIl2Cpp<Filter>();
 			category = MelonPreferences.CreateCategory("ColorShift");
 			mainMode = category.CreateEntry("MainCamMode", Mode.Normal);
 			keybinds = category.CreateEntry("Keybinds", true);
@@ -44,11 +44,11 @@ namespace ColorShift
 			customs[4] = category.CreateEntry("Custom5", normalColor);
 			category.SaveToFile();
 			OnPreferencesLoaded();
-        }
+		}
 
 		public override void OnPreferencesLoaded()
 		{
-            Filter.RGB[9] = customs[0].Value;
+			Filter.RGB[9] = customs[0].Value;
 			Filter.RGB[10] = customs[1].Value;
 			Filter.RGB[11] = customs[2].Value;
 			Filter.RGB[12] = customs[3].Value;
@@ -58,14 +58,14 @@ namespace ColorShift
 
 		public override void OnSceneWasInitialized(int buildIndex, string sceneName)
 		{
-            if (mainFilter == null && Camera.main != null)
+			if (mainFilter == null && Camera.main != null)
 			{
 				AssetBundle assetBundle = AssetBundle.LoadFromMemory_Internal(Properties.Resources.assets, 0u);
 				Il2CppReferenceArray<UnityEngine.Object> il2CppReferenceArray = assetBundle.LoadAllAssets();
 				Filter.ChannelMixerShader = ((Il2CppObjectBase)(object)il2CppReferenceArray[0]).Cast<Shader>();
 				mainFilter = Camera.main.gameObject.AddComponent<Filter>();
-                mainFilter.mode = mainMode.Value;
-                LoggerInstance.Msg("Filter Created");
+				mainFilter.mode = mainMode.Value;
+				LoggerInstance.Msg("Filter Created");
 			}
 			RefreshMainFilter();
 		}
@@ -97,8 +97,8 @@ namespace ColorShift
 				num = 0;
 			}
 			mainFilter.mode = (Mode)num;
-            mainMode.Value = mainFilter.mode;
-            mainMode.Save();
+			mainMode.Value = mainFilter.mode;
+			mainMode.Save();
 			category.SaveToFile();
 			//ResetCursed();
 			LoggerInstance.Msg("Filter Mode: " + mainFilter.mode);
@@ -107,17 +107,17 @@ namespace ColorShift
 		private void RefreshMainFilter()
 		{
 			if (mainFilter != null)
-            {
-                mainFilter.showDifference = showDifference.Value;
-                mainFilter.forceRefresh = true;
+			{
+				mainFilter.showDifference = showDifference.Value;
+				mainFilter.forceRefresh = true;
 			}
 		}
 
 
-        // BPM 165
-        // Each beat lasts 4/11 of a second (60/165)
+		// BPM 165
+		// Each beat lasts 4/11 of a second (60/165)
 		/*
-        static float lengthOfBeat = (4f / 11f) * 2f;
+		static float lengthOfBeat = (4f / 11f) * 2f;
 		static float timeElapsed = 0f;
 		static int colorArrayPos = 0;
 
@@ -140,25 +140,25 @@ namespace ColorShift
 		public static Color[] curColor = new Color[] { new Color(1f, 0f, 0f), new Color(0f, 1f, 0f), new Color(0f, 0f, 1f) };
 
 		private static void ResetCursed()
-        {
+		{
 			timeElapsed = 0f;
 			colorArrayPos = 0;
 		}
 
-        public override void OnUpdate()
-        {
-            if(mainMode.Value == Mode.Custom5)
-            {
-                if(timeElapsed < lengthOfBeat)
-                {
-                    curColor[0] = Color.Lerp(curColor[0], Cursed[colorArrayPos][0], timeElapsed / lengthOfBeat);
+		public override void OnUpdate()
+		{
+			if (mainMode.Value == Mode.Custom5)
+			{
+				if (timeElapsed < lengthOfBeat)
+				{
+					curColor[0] = Color.Lerp(curColor[0], Cursed[colorArrayPos][0], timeElapsed / lengthOfBeat);
 					curColor[1] = Color.Lerp(curColor[1], Cursed[colorArrayPos][1], timeElapsed / lengthOfBeat);
 					curColor[2] = Color.Lerp(curColor[2], Cursed[colorArrayPos][2], timeElapsed / lengthOfBeat);
 					timeElapsed += Time.deltaTime;
 				}
-                else
-                {
-                    timeElapsed = 0f;
+				else
+				{
+					timeElapsed = 0f;
 					colorArrayPos++;
 					if (colorArrayPos > Cursed.Length - 1)
 					{
@@ -169,9 +169,9 @@ namespace ColorShift
 				Filter.RGB[13] = curColor;
 				RefreshMainFilter();
 
-                timeElapsed += Time.deltaTime;
-            }
-        }
+				timeElapsed += Time.deltaTime;
+			}
+		}
 		*/
 	}
 }
