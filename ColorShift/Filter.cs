@@ -135,7 +135,6 @@ namespace ColorShift
 			else
 			{
 				RefreshMaterial();
-				destination.vrUsage = source.vrUsage;
 				Graphics.Blit(source, destination, material, showDifference ? 1 : 0);
 			}
 		}
