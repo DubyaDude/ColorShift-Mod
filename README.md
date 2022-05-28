@@ -1,5 +1,18 @@
-https://www.color-blindness.com/types-of-color-blindness/
-https://web.archive.org/web/20091001043530/http://www.colorjack.com/labs/colormatrix/
+# ColorShift
+Allows you to approximately see the way colorblind people see**. Would mostly help in game/map/avatar design. Also allows you to make your own custom 'color shifts' which may help those that are colorblind*.
+
+## Keybinds
+- **M** - Changing filter mode (Forward)
+- **N** - Changing filter mode (Backward)
+
+## Configuration
+In MelonPreferences.cfg:
+- **MainCamMode**(Enum) - The mode the camera is set to at launch (saved every filter change)
+- **Keybinds**(Bool) - To enable/disable the keybinds
+- **ShowDifference**(Bool) - Show how much colors have been affected with current filter
+- **Custom1-5**(Color[][]) - Cusom color shifts that can be configured by the user
+
+### ColorMatrix presets based on Percentages
 
 <table>
    <tbody>
@@ -132,6 +145,8 @@ https://web.archive.org/web/20091001043530/http://www.colorjack.com/labs/colorma
    </tbody>
 </table>
 
+### ColorMatrix presets based on RGB(255)
+
 <table>
    <tbody>
       <tr>
@@ -262,3 +277,12 @@ https://web.archive.org/web/20091001043530/http://www.colorjack.com/labs/colorma
       </tr>
    </tbody>
 </table>
+
+## Sources:
+- [ColorMatrix Pattern](https://web.archive.org/web/20091001043530/http://www.colorjack.com/labs/colormatrix/)
+- [Color-blind type facts](https://www.color-blindness.com/types-of-color-blindness/)
+
+## DISCLAIMERS:
+- \*This mod in no way is meant to act as a 'ColorBlind mode' for games. This mod is supposed to emulate an approximation of what colorblind people may see to account for color-blind people during game/map/avatar development. 
+  - HOWEVER some people that I've spoken to who were colorblind said that this helped in general gameplay, unfortunately, this is NOT what should be done to account for color-blind people. However, if it does indeed make others' experience better, then be free to use it as such.
+- \*\*The accuracy of the preset color matrix is known to be inaccurate as the original author of these values himself stated "the ColorMatrix version is very simplified, and not accurate" ([Source](https://web.archive.org/web/20141226095637/http://kaioa.com/node/75#comment-247))
