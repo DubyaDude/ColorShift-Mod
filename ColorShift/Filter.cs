@@ -3,8 +3,11 @@ using UnityEngine;
 
 namespace ColorShift
 {
-	public class Filter : MonoBehaviour
+	public class Filter : FilterBase
 	{
+		public Filter(IntPtr obj0) : base(obj0) { }
+        
+        
 		public static Shader ChannelMixerShader;
 
 		public bool forceRefresh = true;
@@ -102,11 +105,8 @@ namespace ColorShift
 			}
 		};
 
-#if !MONO
-		public Filter(IntPtr obj0) : base(obj0) { }
-#endif
 
-		private void Start()
+        private void Start()
 		{
 			RefreshMaterial(true);
 		}

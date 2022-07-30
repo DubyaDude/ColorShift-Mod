@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ColorShift</RootNamespace>
-    <AssemblyName>ColorShift</AssemblyName>
+    <AssemblyName>ColorShift.IL2CPP</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -78,6 +78,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
+    <Compile Include="IL2CPP\FilterBase.cs" />
+    <Compile Include="IL2CPP\Helper.cs" />
     <Compile Include="Mod.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Filter.cs" />

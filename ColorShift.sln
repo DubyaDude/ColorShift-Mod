@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorShift", "ColorShift\ColorShift.csproj", "{F732264E-379F-4F49-92A5-CEAEA8393925}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorShift.IL2CPP", "ColorShift\ColorShift.IL2CPP.csproj", "{F732264E-379F-4F49-92A5-CEAEA8393925}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorShift-Mono", "ColorShift\ColorShift-Mono.csproj", "{07CE69AC-ACD2-4CC7-8060-9BFDB5C57E05}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorShift.Mono", "ColorShift\ColorShift.Mono.csproj", "{07CE69AC-ACD2-4CC7-8060-9BFDB5C57E05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

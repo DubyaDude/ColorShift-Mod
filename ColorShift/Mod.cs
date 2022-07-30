@@ -1,9 +1,5 @@
 ﻿using System;
 using MelonLoader;
-#if !MONO
-using UnhollowerBaseLib;
-using UnhollowerRuntimeLib;
-#endif
 using UnityEngine;
 
 namespace ColorShift
@@ -16,9 +12,7 @@ namespace ColorShift
 
 		public override void OnApplicationStart()
 		{
-#if !MONO
-			ClassInjector.RegisterTypeInIl2Cpp<Filter>();
-#endif
+			Helper.SetupMonobehaviour();
 			Config.Setup();
 			OnPreferencesLoaded();
 		}
@@ -37,16 +31,7 @@ namespace ColorShift
 		{
 			if (mainFilter == null && Camera.main != null)
 			{
-#if MONO
-				AssetBundle assetBundle = AssetBundle.LoadFromMemory(Properties.Resources.assets);
-				if (assetBundle == null) return;
-				UnityEngine.Object[] allAssets = assetBundle.LoadAllAssets();
-				Filter.ChannelMixerShader = (Shader)allAssets[0];
-#else
-				AssetBundle assetBundle = AssetBundle.LoadFromMemory_Internal(Properties.Resources.assets, 0u);
-				Il2CppReferenceArray<UnityEngine.Object> il2CppReferenceArray = assetBundle.LoadAllAssets();
-				Filter.ChannelMixerShader = ((Il2CppObjectBase)(object)il2CppReferenceArray[0]).Cast<Shader>();
-#endif
+				Helper.LoadAssetBundle();
 				mainFilter = Camera.main.gameObject.AddComponent<Filter>();
 				mainFilter.mode = Config.mainMode.Value;
 				LoggerInstance.Msg("Filter Created");
