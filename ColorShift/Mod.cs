@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MelonLoader;
+#if !MONO
 using UnhollowerBaseLib;
 using UnhollowerRuntimeLib;
+#endif
 using UnityEngine;
 
 namespace ColorShift
@@ -15,10 +13,12 @@ namespace ColorShift
 		#region Components
 		private static Filter mainFilter;
 		#endregion
-        
+
 		public override void OnApplicationStart()
 		{
+#if !MONO
 			ClassInjector.RegisterTypeInIl2Cpp<Filter>();
+#endif
 			Config.Setup();
 			OnPreferencesLoaded();
 		}
@@ -37,9 +37,16 @@ namespace ColorShift
 		{
 			if (mainFilter == null && Camera.main != null)
 			{
+#if MONO
+				AssetBundle assetBundle = AssetBundle.LoadFromMemory(Properties.Resources.assets);
+				if (assetBundle == null) return;
+				UnityEngine.Object[] allAssets = assetBundle.LoadAllAssets();
+				Filter.ChannelMixerShader = (Shader)allAssets[0];
+#else
 				AssetBundle assetBundle = AssetBundle.LoadFromMemory_Internal(Properties.Resources.assets, 0u);
 				Il2CppReferenceArray<UnityEngine.Object> il2CppReferenceArray = assetBundle.LoadAllAssets();
 				Filter.ChannelMixerShader = ((Il2CppObjectBase)(object)il2CppReferenceArray[0]).Cast<Shader>();
+#endif
 				mainFilter = Camera.main.gameObject.AddComponent<Filter>();
 				mainFilter.mode = Config.mainMode.Value;
 				LoggerInstance.Msg("Filter Created");
@@ -49,6 +56,8 @@ namespace ColorShift
 
 		public override void OnLateUpdate()
 		{
+			if (mainFilter == null) return;
+
 			if (Config.keybinds.Value)
 			{
 				if (Input.GetKeyDown(KeyCode.M))
@@ -66,7 +75,7 @@ namespace ColorShift
 		{
 			int total = Enum.GetNames(typeof(Mode)).Length;
 			int num = (int)(mainFilter.mode + amount);
-            
+
 			if (num < 0)
 			{
 				num = total - 1;

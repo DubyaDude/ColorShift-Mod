@@ -101,7 +101,10 @@ namespace ColorShift
 				new Color(0f, 0f, 1f)
 			}
 		};
+
+#if !MONO
 		public Filter(IntPtr obj0) : base(obj0) { }
+#endif
 
 		private void Start()
 		{
