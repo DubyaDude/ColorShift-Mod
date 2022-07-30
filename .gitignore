@@ -363,4 +363,6 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # ColorShift
-VRChat/
+GameIL2CPP
+GameMono/
+GameMonoData/

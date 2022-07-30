@@ -1,5 +1,9 @@
 # ColorShift
-Allows you to approximately see the way colorblind people see**. Would mostly help in game/map/avatar design. Also allows you to make your own custom 'color shifts' which may help those that are colorblind*.
+Allows you to approximately see the way colorblind people see. **Would mostly help in game/map/avatar design. Also allows you to make your own custom 'color shifts' which may help those that are colorblind**.
+
+## Project Configuration
+Open Command Prompt inside the project folder and type the following (replacing with YOUR game directory)
+```mklink /j Game "PATH\TO\GAME"```
 
 ## Keybinds
 - **M** - Changing filter mode (Forward)
