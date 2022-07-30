@@ -2,8 +2,10 @@
 Allows you to approximately see the way colorblind people see. **Would mostly help in game/map/avatar design. Also allows you to make your own custom 'color shifts' which may help those that are colorblind**.
 
 ## Project Configuration
-Open Command Prompt inside the project folder and type the following (replacing with YOUR game directory)
-```mklink /j Game "PATH\TO\GAME"```
+Open Command Prompt inside the project folder and type the following (replacing with YOUR directory)
+```mklink /j GameIL2CPP "PATH\TO\IL2CPP\GAME"```
+```mklink /j GameMono "PATH\TO\MONO\GAME"```
+```mklink /j GameMonoData "PATH\TO\MONO\DATA"```
 
 ## Keybinds
 - **M** - Changing filter mode (Forward)
