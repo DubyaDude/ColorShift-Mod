@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: MelonInfo(typeof(ColorShift.ColorShiftMod), "ColorShift", "0.1.2", "DubyaDude, ITR", "https://github.com/DubyaDude/ColorShift")]
+[assembly: MelonInfo(typeof(ColorShift.ColorShiftMod), "ColorShift", "0.1.3", "DubyaDude, ITR", "https://github.com/DubyaDude/ColorShift")]
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
