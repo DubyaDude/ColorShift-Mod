@@ -26,7 +26,6 @@ namespace ColorShift
 			customs[2] = category.CreateEntry("Custom3", normalColor);
 			customs[3] = category.CreateEntry("Custom4", normalColor);
 			customs[4] = category.CreateEntry("Custom5", normalColor);
-			Save();
 		}
 
 		public static void Save()

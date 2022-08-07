@@ -31,6 +31,7 @@ namespace ColorShift
 		{
 			if (mainFilter == null && Camera.main != null)
 			{
+				Config.Save();
 				Helper.LoadAssetBundle();
 				mainFilter = Camera.main.gameObject.AddComponent<Filter>();
 				mainFilter.mode = Config.mainMode.Value;
