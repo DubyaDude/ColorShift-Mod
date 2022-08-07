@@ -30,7 +30,7 @@ namespace ColorShift
 
 		public static void Save()
 		{
-			category.SaveToFile();
+			category.SaveToFile(false);
 		}
 	}
 }
